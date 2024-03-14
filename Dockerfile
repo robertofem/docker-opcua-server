@@ -8,17 +8,12 @@ RUN apk add --no-cache build-base
 RUN apk add --no-cache git
 RUN apk add --no-cache cmake
 
-# Install bash (not really needed to run the app)
-RUN apk add --no-cache bash
-
 # Define the working directory for cloning repositories
 WORKDIR /code
 
 # Install python/pip
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-#RUN python3 -m ensurepip
-#RUN pip3 install --no-cache --upgrade pip setuptools
 
 # Install OPC-UA library
 RUN git clone -b v1.3.6 https://github.com/open62541/open62541.git
